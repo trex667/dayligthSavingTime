@@ -235,7 +235,8 @@ public class DaylightSavingTimeTest {
     public void blafasel() {
 //        Instant instant = Instant.parse("2023-03-26T05:00:00Z");
 //
-//        ZoneId zoneId = ZoneId.of("Europe/Berlin");
+        ZoneId zoneId = ZoneId.of("Europe/Berlin");
+        System.out.println(zoneId.getRules().getTransitionRules());
 //        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);
 //        boolean isDST = zoneId.getRules().isDaylightSavings(instant);
 //        Duration durationDST = zoneId.getRules().getDaylightSavings(instant);
@@ -245,10 +246,11 @@ public class DaylightSavingTimeTest {
 //        System.out.println(isDST);
 //        System.out.println(durationDST.toMinutes());
 //
-//        System.out.println(zoneId.getRules().getTransitionRules().get(0));
 
-        ZonedDateTime start = ZonedDateTime.parse("2023-10-29T01:00+02:00[Europe/Berlin]");
-        Duration duration = Duration.ofMinutes(120);
-        System.out.println(String.format("Start '%s' plus duration in minutes '%d' results in '%s'", start, duration.toMinutes(), start.plus(duration)));
+//        ZonedDateTime start = ZonedDateTime.parse("2023-10-29T01:00+02:00[Europe/Berlin]");
+//        Duration duration = Duration.ofMinutes(120);
+//        System.out.println(String.format("Start '%s' plus duration in minutes '%d' results in '%s'", start, duration.toMinutes(), start.plus(duration)));
+
+
     }
 }

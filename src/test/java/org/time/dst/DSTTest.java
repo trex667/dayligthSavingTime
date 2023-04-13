@@ -93,4 +93,34 @@ public class DSTTest {
         end = ZonedDateTime.parse("2023-10-29T02:30+01:00[Europe/Berlin]");
         System.out.println(String.format("Start '%s' stop '%s' duration in minutes: %d", start, end, Duration.between(start, end).toMinutes()));
     }
+
+    @Test
+    public void testStartAndDuration() {
+        Duration duration = Duration.ofMinutes(120);
+
+        // summer time
+        ZonedDateTime start = ZonedDateTime.parse("2023-04-10T08:00+02:00[Europe/Berlin]");
+        System.out.println(String.format("Start '%s' stop '%s' duration in minutes: %d", start, start.plus(duration), duration.toMinutes()));
+
+        // winter time
+        start = ZonedDateTime.parse("2023-11-10T08:00+01:00[Europe/Berlin]");
+        System.out.println(String.format("Start '%s' stop '%s' duration in minutes: %d", start, start.plus(duration), duration.toMinutes()));
+
+        // start in summer time and plus duration end in winter time
+        duration = Duration.ofMinutes(240);
+        start = ZonedDateTime.parse("2023-10-29T01:00+02:00[Europe/Berlin]");
+        System.out.println(String.format("Start '%s' stop '%s' duration in minutes: %d", start, start.plus(duration), duration.toMinutes()));
+
+        // start in winter time and plus duration end in summer time
+        start = ZonedDateTime.parse("2023-03-26T01:00+01:00[Europe/Berlin]");
+        System.out.println(String.format("Start '%s' stop '%s' duration in minutes: %d", start, start.plus(duration), duration.toMinutes()));
+
+        // start in the first hour of the switch summer to winter
+        start = ZonedDateTime.parse("2023-10-29T02:30+02:00[Europe/Berlin]");
+        System.out.println(String.format("Start '%s' stop '%s' duration in minutes: %d", start, start.plus(duration), duration.toMinutes()));
+
+        // start in the second hour of the switch summer to winter
+        start = ZonedDateTime.parse("2023-10-29T02:30+01:00[Europe/Berlin]");
+        System.out.println(String.format("Start '%s' stop '%s' duration in minutes: %d", start, start.plus(duration), duration.toMinutes()));
+    }
 }
