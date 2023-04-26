@@ -7,16 +7,16 @@ import java.time.ZonedDateTime;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
-public class TimePeriodTest {
+public class TimePeriodZoneTest {
     @Test
     public void testWinterToSummerTime() {
         // switch from winter to summer in zone Europe/Berlin: 2023-03-26T02:00 -> 2023-03-26T03:00
         ZonedDateTime start = ZonedDateTime.parse("2023-03-26T01:00+01:00[Europe/Berlin]");
         ZonedDateTime end = ZonedDateTime.parse("2023-03-26T05:00+02:00[Europe/Berlin]");
 
-        TimePeriod timePeriod = new TimePeriod(start, end);
+        TimePeriodZone timePeriod = new TimePeriodZone(start, end);
 
         assertThat(timePeriod.getDuration(), is(equalTo(Duration.ofMinutes(180))));
     }
@@ -27,7 +27,7 @@ public class TimePeriodTest {
         ZonedDateTime start = ZonedDateTime.parse("2023-10-29T01:00+02:00[Europe/Berlin]");
         ZonedDateTime end = ZonedDateTime.parse("2023-10-29T03:00+01:00[Europe/Berlin]");
 
-        TimePeriod timePeriod = new TimePeriod(start, end);
+        TimePeriodZone timePeriod = new TimePeriodZone(start, end);
 
         assertThat(timePeriod.getDuration(), is(equalTo(Duration.ofMinutes(180))));
     }

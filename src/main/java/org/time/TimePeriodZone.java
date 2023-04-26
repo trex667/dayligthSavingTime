@@ -4,11 +4,11 @@ import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-public class TimePeriod {
+public class TimePeriodZone {
     private final ZonedDateTime startTime;
     private final ZonedDateTime endTime;
 
-    public TimePeriod(ZonedDateTime startTime, ZonedDateTime endTime) {
+    public TimePeriodZone(ZonedDateTime startTime, ZonedDateTime endTime) {
         Objects.requireNonNull(startTime, "Parameter startTime musnt't be null!");
         Objects.requireNonNull(endTime, "Parameter endTime musnt't be null!");
         if(startTime.compareTo(endTime) >= 0){
